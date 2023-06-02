@@ -1,0 +1,2 @@
+INSERT INTO proposer(id_produit, id_offre) VALUES (1, 1);
+INSERT INTO proposer(id_produit, id_offre) VALUES (2, 2);

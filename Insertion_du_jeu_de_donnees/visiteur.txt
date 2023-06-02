@@ -1,0 +1,11 @@
+INSERT INTO visiteur (id_visiteur, sexe, mdp, nom, prenom, adresse_mail, numero_telephone, nom_rue, num_rue, code_postal, ville) VALUES
+(1, 0x4d, 'azerty123', 'Dupont', 'Jean', 'j.dupont@gmail.com', 0123456789, 'Rue de la Paix', 1, '75001', 'Paris'),
+(2, 0x46, 'test1234', 'Martin', 'Marie', 'm.martin@gmail.com', 0234567891, 'Rue des Lilas', 5, '69002', 'Lyon'),
+(3, 0x4d, 'abcd4567', 'Lefebvre', 'Sophie', 's.lefebvre@hotmail.fr', 0345678912, 'Avenue de la Gare', 10, '13008', 'Marseille'),
+(4, 0x4d, 'p@ssword', 'Girard', 'Julien', 'j.girard@yahoo.com', 0456789123, 'Place du Marché', 3, '31000', 'Toulouse'),
+(5, 0x46, '123456', 'Petit', 'Anne', 'a.petit@gmail.com', 0567891234, 'Rue de la République', 8, '44000', 'Nantes'),
+(6, 0x46, 'testtest', 'Durand', 'Lucie', 'l.durand@hotmail.com', 0678912345, 'Boulevard Carnot', 15, '69003', 'Lyon'),
+(7, 0x4d, 'motdepasse', 'Moreau', 'Thierry', 't.moreau@gmail.com', 0789123456, 'Rue des Vignes', 23, '75013', 'Paris'),
+(8, 0x46, '1234abcd', 'Fournier', 'Caroline', 'c.fournier@yahoo.fr', 0891234567, 'Avenue de la Liberté', 12, '13002', 'Marseille'),
+(9, 0x4d, 'azertyuiop', 'Fontaine', 'David', 'd.fontaine@gmail.com', 0912345678, 'Rue des Roses', 7, '31000', 'Toulouse'),
+(10, 0x46, 'test123', 'Rousseau', 'Julie', 'j.rousseau@hotmail.fr', 0123456780, 'Rue des Champs', 20, '44000', 'Nantes');

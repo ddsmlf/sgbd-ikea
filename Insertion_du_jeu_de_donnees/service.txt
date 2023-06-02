@@ -1,0 +1,5 @@
+INSERT INTO service (id_service, tarif, livraison, forfait_montage, cuisine) VALUES
+(1, 25.99, 1, 0, 0),
+(2, 0, 0, 1, 0),
+(3, 60.00, 1, 1, 0),
+(4, 120.00, 1, 1, 1);

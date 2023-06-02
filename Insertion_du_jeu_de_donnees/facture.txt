@@ -1,0 +1,2 @@
+INSERT INTO facture(id_facture, lien_facture, id_client) 
+VALUES (1, 'http://www.exemple.com/facture1.pdf', 1);

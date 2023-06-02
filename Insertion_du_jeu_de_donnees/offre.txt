@@ -1,0 +1,6 @@
+INSERT INTO offre(id_offre, particulier, ref_produit, id_promo) VALUES
+(1, 1, 1, 1),
+(2, 0, 3, NULL),
+(3, 1, 2, 2),
+(4, 0, 4, NULL),
+(5, 1, 5, 1);

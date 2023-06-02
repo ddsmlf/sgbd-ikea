@@ -1,0 +1,6 @@
+INSERT INTO personnel (id_personnel, numero_personnel, date_arrivée, niveau_acces, id_visiteur)
+VALUES (1, 'P001', '2020-01-01', 1, 6),
+(2, 'P002', '2020-01-15', 2, 7),
+(3, 'P003', '2020-02-01', 2, 8),
+(4, 'P004', '2020-02-15', 3, 9),
+(5, 'P005', '2020-03-01', 3, 10);

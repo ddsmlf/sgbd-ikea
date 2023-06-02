@@ -1,0 +1,4 @@
+INSERT INTO carte_ikea_familly (id_carte_ikea_familly, numero_carte, point, id_client)
+VALUES (1, 123456, 50, 1),
+(2, 786526, 850, 3),
+(3, 978463, 400, 5);

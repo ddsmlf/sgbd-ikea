@@ -1,0 +1,244 @@
+CREATE TABLE magasin(
+   id_magasin INT,
+   nom VARCHAR(255),
+   nom_rue VARCHAR(255) NOT NULL,
+   num_rue INT NOT NULL,
+   ville VARCHAR(255),
+   code_postal VARCHAR(255),
+   PRIMARY KEY(id_magasin)
+);
+
+CREATE TABLE visiteur(
+   id_visiteur INT,
+   sexe VARBINARY(1) NOT NULL,
+   mdp VARCHAR(50) NOT NULL,
+   nom VARCHAR(255),
+   prenom VARCHAR(255),
+   adresse_mail VARCHAR(255),
+   numero_telephone INT NOT NULL,
+   nom_rue VARCHAR(255) NOT NULL,
+   num_rue INT NOT NULL,
+   code_postal VARCHAR(255),
+   ville VARCHAR(255),
+   PRIMARY KEY(id_visiteur)
+);
+
+CREATE TABLE client(
+   id_client INT,
+   numero_client INT NOT NULL,
+   particulier BIT NOT NULL,
+   abonnement_newsletter BIT NOT NULL,
+   id_visiteur INT NOT NULL,
+   PRIMARY KEY(id_client),
+   UNIQUE(id_visiteur),
+   FOREIGN KEY(id_visiteur) REFERENCES visiteur(id_visiteur)
+);
+
+CREATE TABLE personnel(
+   id_personnel INT,
+   numero_personnel VARCHAR(255) NOT NULL,
+   date_arrivée DATE,
+   niveau_acces TINYINT NOT NULL,
+   id_visiteur INT NOT NULL,
+   PRIMARY KEY(id_personnel),
+   UNIQUE(id_visiteur),
+   FOREIGN KEY(id_visiteur) REFERENCES visiteur(id_visiteur)
+);
+
+CREATE TABLE contrat(
+   id_contrat INT,
+   numero_contrat INT NOT NULL,
+   type_contrat VARCHAR(255),
+   type_emploi VARCHAR(255) NOT NULL,
+   salaire_mensuel DECIMAL(10,2),
+   PRIMARY KEY(id_contrat)
+);
+
+CREATE TABLE carte_ikea_familly(
+   id_carte_ikea_familly INT,
+   numero_carte INT NOT NULL,
+   point INT NOT NULL,
+   id_client INT NOT NULL,
+   PRIMARY KEY(id_carte_ikea_familly),
+   UNIQUE(id_client),
+   FOREIGN KEY(id_client) REFERENCES client(id_client)
+);
+
+CREATE TABLE produit(
+   id_produit INT,
+   ref_produit INT,
+   nom VARCHAR(255) NOT NULL,
+   description VARCHAR(255),
+   prix_vente INT NOT NULL,
+   prix_achat DECIMAL(5,2),
+   quantite INT NOT NULL,
+   reduction DECIMAL(4,2) NOT NULL,
+   image VARCHAR(255) NOT NULL,
+   couleur VARCHAR(255) NOT NULL,
+   designer VARCHAR(255),
+   profondeur INT,
+   largeur_assise INT,
+   hauteur_assise INT,
+   hauteur INT,
+   largeur INT,
+   longeur_min INT,
+   prod_longeur_max INT,
+   allée TINYINT,
+   place TINYINT,
+   PRIMARY KEY(id_produit)
+);
+
+CREATE TABLE service(
+   id_service INT,
+   tarif DECIMAL(15,2) NOT NULL,
+   livraison BIT NOT NULL,
+   forfait_montage BIT NOT NULL,
+   cuisine BIT NOT NULL,
+   PRIMARY KEY(id_service)
+);
+
+CREATE TABLE stock(
+   id_stock INT,
+   quantite INT NOT NULL,
+   ref_produit INT NOT NULL,
+   PRIMARY KEY(id_stock)
+);
+
+CREATE TABLE panier(
+   id_panier INT,
+   prix_total DECIMAL(15,2) NOT NULL,
+   id_produit INT NOT NULL,
+   id_client INT NOT NULL,
+   PRIMARY KEY(id_panier),
+   FOREIGN KEY(id_client) REFERENCES client(id_client),
+   FOREIGN KEY(id_produit) REFERENCES produit(id_produit)
+);
+
+CREATE TABLE promo(
+   id_promo INT,
+   code_promo INT NOT NULL,
+   reduction DECIMAL(4,2) NOT NULL,
+   PRIMARY KEY(id_promo)
+);
+
+CREATE TABLE emballage(
+   id_emballage INT,
+   largeur INT,
+   hauteur INT,
+   longueur INT,
+   poids INT,
+   numero_colis INT,
+   nombre_colis_total INT,
+   id_produit INT NOT NULL,
+   PRIMARY KEY(id_emballage),
+   FOREIGN KEY(id_produit) REFERENCES produit(id_produit)
+);
+
+CREATE TABLE vente(
+   id_vente INT,
+   date_vente DATE,
+   id_client INT NOT NULL,
+   id_produit INT NOT NULL,
+   PRIMARY KEY(id_vente),
+   UNIQUE(id_produit),
+   FOREIGN KEY(id_client) REFERENCES client(id_client),
+   FOREIGN KEY(id_produit) REFERENCES produit(id_produit)
+);
+
+CREATE TABLE facture(
+   id_facture INT,
+   lien_facture VARCHAR(255),
+   id_client INT NOT NULL,
+   PRIMARY KEY(id_facture),
+   FOREIGN KEY(id_client) REFERENCES client(id_client)
+);
+
+CREATE TABLE devis(
+   id_devis INT,
+   lien_devis VARCHAR(255),
+   id_client INT NOT NULL,
+   PRIMARY KEY(id_devis),
+   FOREIGN KEY(id_client) REFERENCES client(id_client)
+);
+
+CREATE TABLE offre(
+   id_offre INT,
+   particulier BIT NOT NULL,
+   ref_produit INT NOT NULL,
+   id_promo INT,
+   PRIMARY KEY(id_offre),
+   FOREIGN KEY(id_promo) REFERENCES promo(id_promo)
+);
+
+CREATE TABLE visiter(
+   id_magasin INT,
+   id_visiteur INT,
+   PRIMARY KEY(id_magasin, id_visiteur),
+   FOREIGN KEY(id_magasin) REFERENCES magasin(id_magasin),
+   FOREIGN KEY(id_visiteur) REFERENCES visiteur(id_visiteur)
+);
+
+CREATE TABLE signer(
+   id_contrat INT,
+   date_deb DATE NOT NULL,
+   date_fin DATE NOT NULL,
+   id_personnel INT NOT NULL,
+   PRIMARY KEY(id_contrat),
+   FOREIGN KEY(id_contrat) REFERENCES contrat(id_contrat),
+   FOREIGN KEY(id_personnel) REFERENCES personnel(id_personnel)
+);
+
+CREATE TABLE vendre(
+   id_magasin INT,
+   id_produit INT,
+   PRIMARY KEY(id_magasin, id_produit),
+   FOREIGN KEY(id_magasin) REFERENCES magasin(id_magasin),
+   FOREIGN KEY(id_produit) REFERENCES produit(id_produit)
+);
+
+CREATE TABLE rendre(
+   id_magasin INT,
+   id_service INT,
+   PRIMARY KEY(id_magasin, id_service),
+   FOREIGN KEY(id_magasin) REFERENCES magasin(id_magasin),
+   FOREIGN KEY(id_service) REFERENCES service(id_service)
+);
+
+CREATE TABLE stocker(
+   id_produit INT,
+   id_stock INT,
+   PRIMARY KEY(id_produit, id_stock),
+   FOREIGN KEY(id_produit) REFERENCES produit(id_produit),
+   FOREIGN KEY(id_stock) REFERENCES stock(id_stock)
+);
+
+CREATE TABLE posseder2(
+   id_panier INT,
+   commander INT NOT NULL,
+   valider BIT NOT NULL,
+   retirer INT NOT NULL,
+   id_client INT NOT NULL,
+   id_promo INT NOT NULL,
+   PRIMARY KEY(id_panier),
+   UNIQUE(id_client),
+   FOREIGN KEY(id_panier) REFERENCES panier(id_panier),
+   FOREIGN KEY(id_client) REFERENCES client(id_client),
+   FOREIGN KEY(id_promo) REFERENCES promo(id_promo)
+);
+
+CREATE TABLE rajouter(
+   id_produit INT,
+   id_panier INT,
+   quantiter INT NOT NULL,
+   PRIMARY KEY(id_produit, id_panier),
+   FOREIGN KEY(id_produit) REFERENCES produit(id_produit),
+   FOREIGN KEY(id_panier) REFERENCES panier(id_panier)
+);
+
+CREATE TABLE proposer(
+   id_produit INT,
+   id_offre INT,
+   PRIMARY KEY(id_produit, id_offre),
+   FOREIGN KEY(id_produit) REFERENCES produit(id_produit),
+   FOREIGN KEY(id_offre) REFERENCES offre(id_offre)
+);

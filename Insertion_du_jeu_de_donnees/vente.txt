@@ -1,0 +1,1 @@
+INSERT INTO vente (id_vente, date_vente, id_client, id_produit) VALUES (1, '2023-04-03', 1, 1);

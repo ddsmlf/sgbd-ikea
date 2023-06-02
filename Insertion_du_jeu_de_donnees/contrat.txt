@@ -1,0 +1,8 @@
+INSERT INTO contrat (id_contrat, numero_contrat, type_contrat, type_emploi, salaire_mensuel)
+VALUES
+(1, 123456, 'CDI', 'Conseiller de vente', 1700.00),
+(2, 987654, 'CDD', 'Manager de rayon', 2500.00),
+(3, 555555, 'Stage', 'Développeur informatique', 1200.00),
+(4, 888888, 'Apprentissage', 'Assistant RH', 900.00),
+(5, 222222, 'CDD', 'Vendeur en ligne', 1500.00),
+(6, 333333, 'Interim', 'Manutentionnaire', 1300.00);

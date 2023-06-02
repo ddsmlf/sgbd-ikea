@@ -1,0 +1,6 @@
+INSERT INTO rendre (id_magasin, id_service) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(2, 2),
+(3, 4);

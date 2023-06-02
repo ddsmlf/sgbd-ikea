@@ -1,0 +1,7 @@
+INSERT INTO magasin (id_magasin, nom, nom_rue, num_rue, ville, code_postal)
+VALUES
+(1, 'Ikea Paris', 'Rue de Rivoli', 72, 'Paris', '75001'),
+(2, 'Ikea Marseille', 'Avenue du Prado', 23, 'Marseille', '13006'),
+(3, 'Ikea Lyon', 'Rue de la République', 19, 'Lyon', '69001'),
+(4, 'Ikea Toulouse', 'Rue Saint-Rome', 24, 'Toulouse', '31000'),
+(5, 'Ikea Bordeaux', 'Rue Sainte-Catherine', 141, 'Bordeaux', '33000');
